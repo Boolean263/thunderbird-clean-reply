@@ -1,0 +1,6 @@
+<!ENTITY do_rewrap.title "Rewrap long lines">
+<!ENTITY do_rewrap.desc "Automatically rewrap long lines in the quoted email reply">
+<!ENTITY wraplength.title "Wrap lines longer than (characters)">
+<!ENTITY wraplength.desc "This is a built-in preference that influences Clean Reply">
+<!ENTITY grace_margin.title "Grace margin (characters)">
+<!ENTITY grace_margin.desc "Don’t wrap if longest line is less than this many characters longer than the wrap margin (0 disables)">

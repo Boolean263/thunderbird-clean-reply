@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE options [
+    <!ENTITY % optionsDTD SYSTEM "chrome://clean-reply/locale/options.dtd" >
+        %optionsDTD;
+]>
+
+<vbox xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <setting type="bool" pref="extensions.cleanreply.do_rewrap"
+        title="&do_rewrap.title;" desc="&do_rewrap.desc;"/>
+    <setting type="integer" pref="mailnews.wraplength"
+        title="&wraplength.title;" desc="&wraplength.desc;"/>
+    <setting type="integer" pref="extensions.cleanreply.grace_margin"
+        title="&grace_margin.title;" desc="&grace_margin.desc;"/>
+</vbox>
