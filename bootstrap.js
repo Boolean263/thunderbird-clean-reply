@@ -10,14 +10,6 @@ const Cu = Components.utils;
 
 Cu.import("resource://gre/modules/Services.jsm");
 
-const sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService);
-
-
-
-let myStylesheets = [
-    "chrome://clean-reply/skin/clean-reply.css",
-];
-
 function dumpObj(aTitle, aObj)
 {
     dump("=== "+aTitle+": "+aObj+" ===\n");
@@ -34,11 +26,6 @@ function dumpObj(aTitle, aObj)
  */
 function startup(data, reason)
 {
-    // Register my stylesheets
-    myStylesheets.forEach(function(x) {
-        let uri = Services.io.newURI(x, null, null);
-        sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
-    });
 
     gCleanReplyWindowListener.register();
 } // function startup()
@@ -50,14 +37,6 @@ function startup(data, reason)
 function shutdown(data, reason)
 {
 
-    // Unegister my stylesheets
-    myStylesheets.forEach(function(x) {
-        let uri = Services.io.newURI(x, null, null);
-        if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
-            sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
-        }
-    });
-
     gCleanReplyWindowListener.unregister();
 } // function shutdown()
 
@@ -68,16 +47,16 @@ function install(aData, aReason) { }
 function uninstall(aData, aReason) { }
 
 /*
- *
+ * =windowlistener=
  *
  */
 var gCleanReplyWindowListener = {
     onOpenWindow: function(aXULWindow) {
-        dumpObj("onOpenWindow",aXULWindow)
+        dumpObj("onOpenWindow",aXULWindow);
     },
 
     onCloseWindow: function(aXULWindow) {
-        dumpObj("onCloseWindow",aXULWindow)
+        dumpObj("onCloseWindow",aXULWindow);
     },
 
     onWindowTitleChange: function(aXULWindow, aNewTitle) {},
@@ -91,14 +70,20 @@ var gCleanReplyWindowListener = {
     },
 
     loadIntoWindow: function(aDOMWindow) {
+        dumpObj("loadIntoWindow",aDOMWindow);
     },
 
     unloadFromWindow: function(aDOMWindow, aXULWindow) {
+        dumpObj("unloadFromWindow:aDOMWindow",aDOMWindow);
+        dumpObj("unloadFromWindow:aXULWindow",aXULWindow);
     },
 }; // var gCleanReplyWindowListener
 
+var gCleanReplyDocListener = {
+}; // var gCleanReplyDocListener
+
 /*
- * =ClipboardSaver=
+ * =clipboardsaver=
  * Some of the selection manipulation we do can destroy
  * the X11 selection clipboard.  This saves and restores it.
  */

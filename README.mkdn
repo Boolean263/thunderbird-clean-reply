@@ -1,0 +1,15 @@
+# Clean Reply for Thunderbird
+
+**THIS PROJECT IS NOT YET IN A USABLE STATE.**
+
+## About
+
+This is a redesign and modernization of an old Thunderbird addon I created
+called [AutoRewrap](http://autorewrap.mozdev.org/). That addon simply
+rewrapped the reply text when you replied to an email that had long lines
+in it. This addon will start with that and add other similar housekeeping
+routines.
+
+## Author
+
+David Perry (aka [Boolean263](https://github.com/Boolean263))
